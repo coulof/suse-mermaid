@@ -16,9 +16,12 @@ To generate high-resolution, brand-compliant PNGs from your Linux VM:
    npm install -g @mermaid-js/mermaid-cli
    ```
 2. **Generate Diagram:**
+   Ensure your `.mmd` file includes the `%%{init...}%%` block found in `suse-theme.mmd`. Then run the CLI and pass `suse-font.css` to load the official typography:
    ```bash
-   mmdc -i your-diagram.mmd -o output.png -w 3000 -C theme.css
+   mmdc -i example-sizer.mmd -o output.png -w 3000 -C suse-font.css
    ```
+
+*(Note: Puppeteer requires a `puppeteer-config.json` with `{"args": ["--no-sandbox"]}` on some Linux distros. Pass it with `-p puppeteer-config.json` if needed).*
 
 ## 📐 Semantic Classes
 - `:::mint` -> Entry points / Excel Files
