@@ -1,2 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=SUSE:wght@400;600;700&display=swap');
-* { font-family: 'SUSE', sans-serif !important; }
+
+/**
+ * SUSE Font Override
+ * Mermaid's internal themes use high-specificity selectors. 
+ * We must target them explicitly to ensure the SUSE font is applied.
+ */
+
+/* General SVG text (Nodes, Labels, Titles) */
+svg, svg text, .node text, .edgeLabel, .label text, .cluster text, .titleText {
+  font-family: 'SUSE', sans-serif !important;
+}
+
+/* Specific for Flowcharts */
+.mermaid .node rect, .mermaid .node circle, .mermaid .node ellipse, .mermaid .node polygon, .mermaid .node path {
+  font-family: 'SUSE', sans-serif !important;
+}
+
+/* Ensure the font weight is respected */
+.node.pine text, .node.jungle text {
+  font-weight: 600 !important;
+}
