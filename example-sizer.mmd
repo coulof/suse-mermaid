@@ -1,0 +1,29 @@
+%%{init: { 'theme': 'base', 'themeVariables': { 'fontFamily': 'SUSE, sans-serif' } } }%%
+graph TD
+    classDef pine fill:#0c322c,stroke:#0c322c,color:#ffffff,stroke-width:2px;
+    classDef jungle fill:#30ba78,stroke:#30ba78,color:#0c322c,stroke-width:2px;
+    classDef mint fill:#90ebcd,stroke:#0c322c,color:#0c322c,stroke-width:1px;
+    classDef fog fill:#efefef,stroke:#90ebcd,color:#0c322c,stroke-dasharray: 5 5;
+
+    START([Live Optics Export]):::mint --> DETECT{Auto-Detect}:::mint
+    
+    subgraph Local_Logic ["Deterministic Engine (Local)"]
+        direction TB
+        RULES[23 Migration Rules]:::pine
+        MATH[Sizing Engine]:::pine
+    end
+    
+    DETECT --> RULES
+    DETECT --> MATH
+
+    subgraph AI_Logic ["Strategic Intelligence (Cloud)"]
+        direction TB
+        GEMINI((Gemini 2.5)):::jungle
+        WAVES[Wave Planning]:::jungle
+    end
+
+    RULES & MATH -.-> GEMINI
+    GEMINI --> WAVES
+    WAVES --> REPORT[/Final Assessment Report/]:::pine
+
+    class Local_Logic,AI_Logic fog;
